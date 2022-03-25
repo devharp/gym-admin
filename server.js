@@ -15,20 +15,38 @@ app.use('/', express.static(path.join(__dirname, '/public/')));
 app.post('/metainfo', (req, res) => {
     console.log(req.body);
     db.getMetaInfo()
-    .then(payload => { 
-        if(req.body === '.all'){
-            res.send(payload);
-            return;
-        }
-        for(e of payload){
-            if(e.name === req.body){
-                res.send(e);
+        .then(payload => {
+            if (req.body === '.all') {
+                res.send(payload);
                 return;
             }
-        }
-        res.sendStatus(500);
-    })
-    .catch(err => { res.send(err) });
+            for (e of payload) {
+                if (e.name === req.body) {
+                    res.send(e);
+                    return;
+                }
+            }
+            res.sendStatus(500);
+        })
+        .catch(err => { res.send(err) });
+});
+
+app.post('/setcontent', (req, res) => {
+
+    console.log(req.query);
+    switch (req.query.name) {
+        case 'HOME':
+            // console.log(req.body);
+            const fs = require('fs');
+            fs.writeFileSync(path.join(__dirname, '/public/webpage-content/home/content.json'), String(req.body));
+            console.log('Content has been changed');
+            break;
+        default:
+            break;
+    }
+
+    res.sendStatus(200);
+
 });
 
 
