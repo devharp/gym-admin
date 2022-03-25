@@ -9,9 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NoPage />} />
+        <Route path='/admin' element={<Home />} />
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
   );

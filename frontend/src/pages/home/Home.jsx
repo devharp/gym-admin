@@ -21,7 +21,7 @@ function Home() {
     useEffect(() => {
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3001/metainfo');
+        xhr.open('POST', 'http://localhost:3001/admin/metainfo');
         xhr.onreadystatechange = () => {
             if (xhr.status === 200 && xhr.readyState === 4) {
                 const payload = JSON.parse(xhr.response);
@@ -75,7 +75,7 @@ function Home() {
             console.log('Page editor component loaded');
             if (props.content.length > 0) {
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'http://localhost:3001' + props.content);
+                xhr.open('GET', 'http://localhost:3001/admin' + props.content);
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         const payload = JSON.parse(xhr.responseText);
@@ -108,7 +108,7 @@ function Home() {
 
         function handleSaveClick() {
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:3001/setcontent?name=HOME');
+            xhr.open('POST', 'http://localhost:3001/admin/setcontent?name=HOME');
             let temp = {blocks: webpageblocks};
             xhr.send(JSON.stringify(temp));
         }

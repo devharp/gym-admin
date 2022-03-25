@@ -10,9 +10,10 @@ const db = require('./db');
 app.use(require('cors')());
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(bodyparser.text());
-app.use('/', express.static(path.join(__dirname, '/public/')));
+app.use('/admin', express.static(path.join(__dirname, '/frontend/build/')));
+app.use('/admin/webpage-content', express.static(path.join(__dirname, '/public/webpage-content')));
 
-app.post('/metainfo', (req, res) => {
+app.post('/admin/metainfo', (req, res) => {
     console.log(req.body);
     db.getMetaInfo()
         .then(payload => {
@@ -31,7 +32,7 @@ app.post('/metainfo', (req, res) => {
         .catch(err => { res.send(err) });
 });
 
-app.post('/setcontent', (req, res) => {
+app.post('/admin/setcontent', (req, res) => {
 
     console.log(req.query);
     switch (req.query.name) {
