@@ -1,0 +1,17 @@
+.active{
+    background-color: black;
+    color: rgb(247, 247, 247);
+}
+
+.hover:hover{
+    background-color: rgb(247, 247, 247);
+    cursor: pointer;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.user-select-none{
+    user-select: none;
+}
