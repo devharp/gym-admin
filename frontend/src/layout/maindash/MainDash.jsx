@@ -34,7 +34,7 @@ function MainDash(props) {
             </Desktop>
             <Mobile>
                 <div className='d-flex flex-column' style={{ height: '100vh' }}>
-                    <Box boxShadow={2} className='d-flex justify-content-between align-items-center h3 px-1' style={{ height: '50px', overflow: 'hidden' }}>
+                    <Box boxShadow={2} className='d-flex justify-content-between align-items-center h3 px-1 flex-shrink-0' style={{ minHeight: '50px', overflow: 'hidden' }}>
                         <Button onClick={toggleDrawer(true)} sx={{ color: 'rgb(0, 0, 0)' }}>
                             <MenuIcon />
                         </Button>
